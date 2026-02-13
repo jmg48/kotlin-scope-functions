@@ -1,0 +1,24 @@
+
+root = true
+
+# Apply to all C# files
+[*.cs]
+
+# Example style preferences
+dotnet_style_qualification_for_field = false:suggestion
+dotnet_style_qualification_for_method = false:suggestion
+csharp_style_var_for_local_declarations = true:suggestion
+csharp_style_prefer_braces = always:error
+
+# Treat warnings from analyzers as errors
+# (Highly recommended for CI)
+dotnet_analyzer_diagnostic.severity = error
+
+# Example naming rule
+dotnet_naming_rule.private_fields_should_be_camel_case.severity = warning
+dotnet_naming_rule.private_fields_should_be_camel_case.symbols = private_fields
+dotnet_naming_rule.private_fields_should_be_camel_case.style = camel_case_style
+
+dotnet_naming_symbols.private_fields.applicable_kinds = field
+dotnet_naming_symbols.private_fields.applicable_accessibilities = private
+dotnet_naming_style.camel_case_style.capitalization = camel_case
