@@ -32,6 +32,12 @@ namespace Kotlin
 
         public static T? TakeIf<T>(this T value, Func<T, bool> predicate) => predicate(value) ? value : default;
 
-        public static async Task<T?> TakeIfAsync<T>(this Task<T> value, Func<T, bool> predicate) => (await value).Let(it => predicate(it) ? it : default);
+        public static T? TakeUnless<T>(this T value, Func<T, bool> predicate) => predicate(value) ? default : value;
+
+        public static async Task<T?> TakeIfAsync<T>(this Task<T> value, Func<T, bool> predicate) =>
+            (await value).Let(it => predicate(it) ? it : default);
+
+        public static async Task<T?> TakeUnlessAsync<T>(this Task<T> value, Func<T, bool> predicate) =>
+            (await value).Let(it => predicate(it) ? default : it);
     }
 }
